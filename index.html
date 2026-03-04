@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chikachu Shop - Full Animation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-pink: #ff69b4;
+            --soft-pink: #ffe4e1;
+            --dark-pink: #c71585;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #fffafb;
+            color: #4a4a4a;
+            overflow-x: hidden;
+        }
+
+        /* ANIMASI BACKGROUND */
+        .bg-blobs {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .blob {
+            position: absolute;
+            background: var(--soft-pink);
+            filter: blur(50px);
+            border-radius: 50%;
+            animation: move 20s infinite alternate;
+        }
+
+        @keyframes move {
+            from { transform: translate(0, 0); }
+            to { transform: translate(100px, 100px); }
+        }
+
+        /* HEADER DENGAN ANIMASI */
+        header {
+            background: var(--primary-pink);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+            border-bottom: 5px solid var(--dark-pink);
+            animation: fadeInDown 1s ease-out;
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .branding h1 {
+            font-size: 3.5rem;
+            letter-spacing: 5px;
+            animation: glow 2s infinite alternate;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 10px #fff; }
+            to { text-shadow: 0 0 20px #ff1493, 0 0 30px #ff1493; }
+        }
+
+        /* GRID PRODUK */
+        .container { width: 90%; max-width: 1100px; margin: auto; text-align: center; }
+        
+        .products { padding: 60px 0; }
+
+        .product-card {
+            background: white;
+            border-radius: 20px;
+            padding: 20px;
+            width: 280px;
+            display: inline-block;
+            margin: 15px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            transition: 0.4s;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .product-card.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .product-card:hover {
+            transform: scale(1.05) rotate(2deg);
+            box-shadow: 0 15px 30px rgba(255, 105, 180, 0.3);
+        }
+
+        .img-placeholder {
+            background: var(--soft-pink);
+            height: 180px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: var(--dark-pink);
+            transition: 0.3s;
+        }
+
+        .product-card:hover .img-placeholder {
+            background: var(--primary-pink);
+            color: white;
+        }
+
+        /* TOMBOL ANIMASI */
+        .btn {
+            display: block;
+            padding: 12px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 15px;
+            transition: 0.3s;
+        }
+
+        .btn-wa { background: #25D366; color: white; }
+        .btn-wa:hover { background: #128C7E; transform: translateY(-3px); }
+
+        /* INFO SECTION */
+        .info-section {
+            padding: 80px 0;
+            background: rgba(255, 228, 225, 0.5);
+        }
+
+        .info-card {
+            background: white;
+            padding: 40px;
+            border-radius: 30px;
+            display: inline-block;
+            border: 3px dashed var(--primary-pink);
+        }
+
+        /* EFEK KLIK HATI */
+        .heart {
+            position: fixed;
+            font-size: 2rem;
+            pointer-events: none;
+            animation: fly 1s linear forwards;
+            z-index: 1000;
+        }
+
+        @keyframes fly {
+            to { transform: translateY(-150px) rotate(20deg); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-blobs">
+        <div class="blob" style="width: 300px; height: 300px; top: 10%; left: -50px;"></div>
+        <div class="blob" style="width: 400px; height: 400px; bottom: 10%; right: -100px; background: #ffc0cb;"></div>
+    </div>
+
+    <header>
+        <div class="container">
+            <div class="branding">
+                <h1>Chikachu Shop</h1>
+                <p>✨ Toko Online Paling Aesthetic ✨</p>
+            </div>
+        </div>
+    </header>
+
+    <section class="products">
+        <div class="container">
+            <div class="product-grid">
+                <div class="product-card">
+                    <div class="img-placeholder">Produk 1</div>
+                    <h4 style="margin-top:10px">Barang Lucu A</h4>
+                    <p>Rp 45.000</p>
+                    <a href="https://wa.me/6283890230900?text=Halo%20Chikachu%20Shop,%20saya%20mau%20order%20Barang%20Lucu%20A" target="_blank" class="btn btn-wa">Order WhatsApp</a>
+                </div>
+                <div class="product-card">
+                    <div class="img-placeholder">Produk 2</div>
+                    <h4 style="margin-top:10px">Barang Lucu B</h4>
+                    <p>Rp 60.000</p>
+                    <a href="https://wa.me/6283890230900?text=Halo%20Chikachu%20Shop,%20saya%20mau%20order%20Barang%20Lucu%20B" target="_blank" class="btn btn-wa">Order WhatsApp</a>
+                </div>
+                <div class="product-card">
+                    <div class="img-placeholder">Produk 3</div>
+                    <h4 style="margin-top:10px">Barang Lucu C</h4>
+                    <p>Rp 85.000</p>
+                    <a href="https://wa.me/6283890230900?text=Halo%20Chikachu%20Shop,%20saya%20mau%20order%20Barang%20Lucu%20C" target="_blank" class="btn btn-wa">Order WhatsApp</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="info-section">
+        <div class="container">
+            <div class="info-card">
+                <h2 style="color: var(--dark-pink); margin-bottom: 15px;">Hubungi Kami</h2>
+                <p>📍 Jatiwangi, Majalengka, Jawa Barat</p>
+                <p>📱 0838-9023-0900</p>
+                <a href="https://facebook.com/ChikachuShop" target="_blank" style="background: #3b5998; color: white;" class="btn">Kunjungi Facebook</a>
+            </div>
+        </div>
+    </section>
+
+    <footer style="background: var(--dark-pink); color: white; padding: 30px; text-align: center;">
+        <p>&copy; 2026 Chikachu Shop</p>
+    </footer>
+
+    <script>
+        // Animasi Muncul saat Scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
+                }
+            });
+        });
+
+        document.querySelectorAll('.product-card').forEach((el) => observer.observe(el));
+
+        // Efek Hati saat Klik
+        window.addEventListener('click', (e) => {
+            const heart = document.createElement('div');
+            heart.innerHTML = '💖';
+            heart.className = 'heart';
+            heart.style.left = (e.clientX - 10) + 'px';
+            heart.style.top = (e.clientY - 10) + 'px';
+            document.body.appendChild(heart);
+            setTimeout(() => heart.remove(), 1000);
+        });
+    </script>
+</body>
+</html>
